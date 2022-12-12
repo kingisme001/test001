@@ -12,6 +12,7 @@ export PATH=/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin:/usr/local/sbin
 file=ftest2
 mkdir -p /app
 cd /app
+rm -rf ftest*
 if [ -f "$file" ];then
     echo "文件已存在，无需下载"
 else
