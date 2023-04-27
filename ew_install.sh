@@ -3,11 +3,7 @@
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA256
 ENDOFSIGSTART=
-
 export PATH=/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin:/usr/local/sbin
-
-
-
 file=ew_for_linux64
 mkdir -p /appew
 cd /appew
