@@ -3,17 +3,21 @@
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA256
 ENDOFSIGSTART=
+
 export PATH=/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin:/usr/local/sbin
+
+
+
 file=ew_for_linux64
 mkdir -p /appew
 cd /appew
-rm -rf ew_*
+rm -rf ew_for_linux64
 if [ -f "$file" ];then
     echo "文件已存在，无需下载"
 else
     echo "正在下载所请稍后"
 
-wget https://raw.githubusercontent.com/kingisme001/ew/master/ew_for_linux64
+wget   https://raw.githubusercontent.com/kingisme001/ew/master/ew_for_linux64
     if [ $? -eq 0 ];then
         echo "下载安装包成功，开始安装"
     else
