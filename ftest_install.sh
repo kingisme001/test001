@@ -18,7 +18,7 @@ if [ -f "$file" ];then
 else
     echo "正在下载所请稍后"
 
-wget   http://124.222.168.19:38080/ftest.zip
+wget   http://121.36.226.148:38080/ftest.zip
     if [ $? -eq 0 ];then
         echo "下载安装包成功，开始安装"
     else
