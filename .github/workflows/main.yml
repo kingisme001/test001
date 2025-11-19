@@ -1,1 +1,41 @@
+name: main
 
+on:
+  workflow_dispatch:
+    inputs:
+      runtime:
+        description: 'Runtime hours'
+        required: true
+        default: '6'
+
+jobs:
+  cloud-desktop:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install Docker and X11
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y xvfb x11vnc fluxbox
+
+    - name: Setup VNC server
+      run: |
+        Xvfb :0 -screen 0 1024x768x16 &
+        export DISPLAY=:0
+        fluxbox &
+        x11vnc -display :0 -forever -shared -nopw &
+
+    - name: Install noVNC
+      run: |
+        git clone https://github.com/novnc/noVNC.git
+        ./noVNC/utils/novnc_proxy --vnc localhost:5900 --listen 6080 &
+
+    - name: Expose desktop with ngrok
+      uses: gabrielecirulli/ngrok-action@v0.3.0
+      with:
+        authtoken: ${{ secrets.NGROK_AUTHTOKEN }}
+        proto: http
+        port: 6080
