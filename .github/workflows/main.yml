@@ -33,9 +33,4 @@ jobs:
         git clone https://github.com/novnc/noVNC.git
         ./noVNC/utils/novnc_proxy --vnc localhost:5900 --listen 6080 &
 
-    - name: Expose desktop with ngrok
-      uses: gabrielecirulli/ngrok-action@v0.3.0
-      with:
-        authtoken: ${{ secrets.NGROK_AUTHTOKEN }}
-        proto: http
-        port: 6080
+    
